@@ -1,0 +1,51 @@
+ body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: rgb(179, 224, 252);
+    overflow: hidden;
+}
+.game-container{
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+.balloon{
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    background: red;
+    cursor: pointer;
+    border-radius: 50% 50% / 60% 60%;
+    transition: transfom 02.s;
+}
+.balloon:hover{
+    transform: scale(1.2);
+}
+#score{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    color: black;
+}
+#game-over{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+    display: none;
+}
+#restart-btn{
+    display: inline-block;
+    background-color: lightpink;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+}
+#restart-btn:hover{
+    background-color: rgb(255, 125, 147);
+}

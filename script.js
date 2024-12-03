@@ -3,7 +3,7 @@ const gameContainer = document.getElementById("game-container");
     const gameOverDisplay = document.getElementById("game-over");
     let score = 0;
     let gameActive = true;
-
+    let balloonInterval;
     function createBalloon() {
         if (!gameActive) return;
         const balloon = document.createElement("div");
@@ -16,6 +16,11 @@ const gameContainer = document.getElementById("game-container");
         gameContainer.appendChild(balloon);
 
         let moveInterval = setInterval(() => {
+          if (!gameActive){
+            clearInterval(moveInterval)
+            balloon.remove()
+            return
+          }
             let currentBottom = parseInt(window.getComputedStyle(balloon).bottom);
             if (currentBottom >= window.innerHeight) {
               clearInterval(moveInterval);
@@ -39,6 +44,7 @@ const gameContainer = document.getElementById("game-container");
         function gameOver() {
             gameActive = false;
             gameOverDisplay.style.display = "block";
+            clearInterval(balloonInterval)
           }
           // Restart game
           function restartGame() {
@@ -53,7 +59,7 @@ const gameContainer = document.getElementById("game-container");
           }
           // Start game
           function startGame() {
-            setInterval(createBalloon, 1000);
+            balloonInterval=setInterval(createBalloon, 1000);
           }
           // Initialize
           startGame();

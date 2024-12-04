@@ -1,6 +1,9 @@
 const gameContainer = document.getElementById("game-container");
     const scoreDisplay = document.getElementById("score");
     const gameOverDisplay = document.getElementById("game-over");
+    const popsound = document.getElementById("pop-sound");
+    const gameoversound = document.getElementById("game-over-sound");
+
     let score = 0;
     let gameActive = true;
     let balloonInterval;
@@ -38,6 +41,8 @@ const gameContainer = document.getElementById("game-container");
             scoreDisplay.textContent = `Score: ${score}`;
             balloon.remove();
             clearInterval(moveInterval);
+            popsound.currentTime=0;
+            popsound.play()
           });
         }
 
@@ -45,6 +50,8 @@ const gameContainer = document.getElementById("game-container");
             gameActive = false;
             gameOverDisplay.style.display = "block";
             clearInterval(balloonInterval)
+            gameoversound.currentTime=0
+            gameoversound.play()
           }
           // Restart game
           function restartGame() {
@@ -63,3 +70,4 @@ const gameContainer = document.getElementById("game-container");
           }
           // Initialize
           startGame();
+         
